@@ -102,18 +102,17 @@ sudo $CACHE/alpine-make-rootfs \
         cve="$(mktemp -d)"
         git clone --single-branch https://github.com/andigandhi/CVE-2024-1086_bitpixie.git $cve
         cd $cve
-        # Use commit d2b41205ff57 ("Added wildcard search algorithm to scan for starting bytes
-        # "03 20 xx 00"") as HEAD
-        git reset --hard d2b41205ff57
+        # Use commit 3c25f59b751c ("Fix recv_ipv4_udp function in net header file") as HEAD
+        git reset --hard 3c25f59b751c
         make CC=cc && cp ./exploit /usr/bin
 
         # Build dislocker
         bitlocker="$(mktemp -d)"
         git clone --single-branch https://github.com/Aorimn/dislocker.git $bitlocker
         cd $bitlocker
-        # Use commit 3e7aea196eaa ("Merge pull request #317 from
-        # JunielKatarn/macos") as HEAD
-        git reset --hard 3e7aea196eaa
+        # Use commit 38dab03175cb ("Merge pull request #351 from 
+        # neuhaus/patch-1") as HEAD
+        git reset --hard 38dab03175cb
         cmake -S ./ && make && make install
 
         # Cleanup build environment
